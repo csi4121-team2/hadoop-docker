@@ -35,8 +35,6 @@ or
 ## After running docker container
 
 ```bash
-./setup.sh
-
 start-all.sh
 
 ...

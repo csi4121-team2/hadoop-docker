@@ -40,3 +40,5 @@ COPY configs/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 RUN hdfs namenode -format
 
 USER root
+
+ENTRYPOINT [ "./setup.sh" ]
