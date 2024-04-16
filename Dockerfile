@@ -32,9 +32,13 @@ COPY configs/.bashrc $HOME_DIR/configs/.bashrc
 COPY scripts/setup.sh $HOME_DIR/setup.sh
 RUN cat $HOME_DIR/configs/.bashrc >> $HOME_DIR/.bashrc
 
+RUN mkdir -p $HOME_DIR/hadoopdata/hdfs/namenode
+RUN mkdir -p $HOME_DIR/hadoopdata/hdfs/datanode
+
 RUN echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 COPY configs/core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
 COPY configs/hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
+COPY configs/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 COPY configs/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 RUN hdfs namenode -format
